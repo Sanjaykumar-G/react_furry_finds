@@ -1,0 +1,204 @@
+/* General Page Styles */
+.pet-foods-list-page {
+  padding: 20px;
+  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+
+
+
+/* Video Section */
+.pet-foods-video-section {
+  width: 100%;
+  height: 500px; /* Increased height for larger video */
+  overflow: hidden;
+  position: relative;
+}
+
+.pet-foods-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire container */
+}
+
+/* Header Styles */
+.pet-foods-page-header {
+  background-color: #f8e4d7;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.pet-foods-page-navigation {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 20px;
+  display: flex;
+}
+
+.pet-foods-nav-link {
+  color: #7d3f2a;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.pet-foods-nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Title Styles */
+.pet-foods-page-title {
+  text-align: center;
+  color: #7d3f2a;
+  margin: 20px 0;
+}
+
+/* Discount Carousel Section */
+.pet-foods-discount-carousel-section {
+  margin-bottom: 60px; /* Increased margin-bottom for more space */
+  padding: 20px; /* Added padding to make section larger */
+  background-color: #e4cab5; /* Optional: Adjust background color for visibility */
+  border-radius: 10px; /* Optional: Rounded corners */
+}
+
+.pet-foods-section-title {
+  text-align: center;
+  color: #a4826d;
+  margin-bottom: 20px;
+  font-size: 1.5em; /* Increase font size */
+}
+
+/* Filter Section */
+.pet-foods-filter-section {
+  margin-bottom: 60px; /* Increased margin-bottom for more space */
+  padding: 20px; /* Added padding to make section larger */
+  background-color: #fff; /* Optional: Background color for contrast */
+  border: 1px solid #ddd; /* Optional: Border for better visibility */
+  border-radius: 10px; /* Optional: Rounded corners */
+}
+
+.pet-foods-search-filter {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pet-foods-search-input {
+  width: 100%;
+  max-width: 700px; /* Increased max-width */
+  padding: 12px; /* Increased padding */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Filter Options Styles */
+.pet-foods-filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px; /* Increased gap between filter groups */
+  justify-content: center;
+}
+
+.pet-foods-filter-group {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 200px; /* Ensures consistent sizing of filter groups */
+}
+
+.pet-foods-filter-label {
+  margin-bottom: 8px; /* Increased margin for better spacing */
+  font-weight: bold;
+  color: #7d3f2a;
+}
+
+.pet-foods-filter-select {
+  padding: 12px; /* Increased padding */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Product List Section */
+.pet-foods-product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.pet-foods-product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box-shadow for elegance */
+  transition: transform 0.3s, box-shadow 0.3s; /* Added transition for hover effect */
+}
+
+.pet-foods-product-card:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.pet-foods-product-image {
+  width: 100%;
+  height: 200px; /* Fixed height for consistency */
+  object-fit: cover; /* Ensures the image covers the entire container */
+}
+.pet-foods-card {
+  width: 100%; /* Adjust based on design needs */
+  max-width: 300px; /* Example maximum width for card */
+  margin: 0 auto; /* Center align */
+}
+
+.pet-foods-product-details {
+  padding: 15px;
+}
+
+.pet-foods-product-name {
+  font-size: 1.2em;
+  color: #7d3f2a;
+  margin: 10px 0;
+}
+
+.pet-foods-product-price {
+  font-size: 1.1em;
+  color: #7d3f2a;
+}
+
+.pet-foods-product-discount-price {
+  font-weight: bold;
+}
+
+.pet-foods-product-original-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 10px;
+}
+
+.pet-foods-product-rating {
+  margin: 10px 0;
+  color: #f2b600;
+}
+
+.pet-foods-product-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pet-foods-add-to-cart-button,
+.pet-foods-view-button {
+  background-color: #7d3f2a;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pet-foods-add-to-cart-button:hover,
+.pet-foods-view-button:hover {
+  background-color: #a4826d;
+}
+
+
