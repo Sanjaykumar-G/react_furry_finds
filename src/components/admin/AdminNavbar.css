@@ -1,0 +1,44 @@
+/* AdminNavbar.css */
+
+.admin-navbar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .admin-navbar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .admin-navbar li {
+    margin: 20px 0;
+  }
+  
+  .admin-navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+  }
+  
+  .admin-navbar a:hover {
+    background-color: #495057;
+    color: #ffffff;
+  }
+  
+  .admin-navbar .nav-header {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  

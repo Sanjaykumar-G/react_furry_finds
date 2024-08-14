@@ -4,6 +4,13 @@ import './ItemViewPage.css'; // Import the updated CSS
 import { Header, Footer } from '../Homepage';
 import Cart from '../cart/Cart'; // Import Cart component
 
+// Importing icon images
+import qualityIcon from '../../assets/icons/quality.png';
+import durabilityIcon from '../../assets/icons/durability.png';
+import sizesIcon from '../../assets/icons/sizes.png';
+
+// ItemViewPage.jsx
+
 const ItemViewPage = () => {
   const location = useLocation();
   const { item } = location.state || {};
@@ -26,7 +33,6 @@ const ItemViewPage = () => {
     '20kg': item.price20kg,
   };
 
-  // Ensure the selected price is valid
   const selectedPrice = sizeOptions[selectedSize] || 0;
 
   const handleAddToCart = () => {
@@ -73,14 +79,13 @@ const ItemViewPage = () => {
         <div className="item-view-image-container">
           <img src={item.image} alt={item.name} className="item-view-image" />
           <div className="item-view-image-thumbnails">
-            {/* Example thumbnails, adjust paths and alt text as needed */}
+            {/* Example thumbnails */}
             <div className="item-view-thumbnail">
               <img src={item.image} alt="Thumbnail 1" />
             </div>
             <div className="item-view-thumbnail">
               <img src={item.image} alt="Thumbnail 2" />
             </div>
-            {/* Add more thumbnails as needed */}
           </div>
         </div>
         <div className="item-view-info">
@@ -96,17 +101,17 @@ const ItemViewPage = () => {
           </p>
           <div className="item-view-size">
             <label htmlFor="size">Size:</label>
-            <select
-              id="size"
-              value={selectedSize}
-              onChange={(e) => setSelectedSize(e.target.value)}
-              className="item-view-size-select"
-            >
-              <option value="2kg">2 kg</option>
-              <option value="5kg">5 kg</option>
-              <option value="10kg">10 kg</option>
-              <option value="20kg">20 kg</option>
-            </select>
+            <div className="item-view-size-options">
+              {Object.keys(sizeOptions).map(size => (
+                <div
+                  key={size}
+                  className={`item-view-size-option ${selectedSize === size ? 'selected' : ''}`}
+                  onClick={() => setSelectedSize(size)}
+                >
+                  {size}
+                </div>
+              ))}
+            </div>
           </div>
           <div className="item-view-quantity">
             <label htmlFor="quantity">Quantity:</label>
@@ -119,9 +124,14 @@ const ItemViewPage = () => {
               className="item-view-quantity-input"
             />
           </div>
-          <button className="item-view-add-to-cart-button" onClick={handleAddToCart}>
-            Add to Cart
-          </button>
+          <div className="item-view-buttons">
+            <button className="item-view-add-to-cart-button" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+            <button className="item-view-checkout-button">
+              Checkout
+            </button>
+          </div>
           <div className="item-view-coupon">
             <input
               type="text"
@@ -142,27 +152,54 @@ const ItemViewPage = () => {
       <section className="item-view-description-container">
         <h2>Description</h2>
         <div className="item-view-description">
-          <ul>
-            <li>
-              <img src="path/to/icon1.png" alt="Feature 1" />
-              <span>High-quality materials</span>
-            </li>
-            <li>
-              <img src="path/to/icon2.png" alt="Feature 2" />
-              <span>Durable and long-lasting</span>
-            </li>
-            <li>
-              <img src="path/to/icon3.png" alt="Feature 3" />
-              <span>Available in various sizes</span>
-            </li>
-          </ul>
-          <p><strong>Usage Instructions:</strong> Use as directed. Ensure to keep the item clean and dry for optimal performance.</p>
-          <p><strong>Customer Reviews:</strong> "Great product! My pet loves it." - Jane Doe</p>
-          <p>"Excellent quality and fast shipping." - John Smith</p>
-          <p><strong>FAQs:</strong></p>
-          <p><strong>Q:</strong> Is this item washable?</p>
-          <p><strong>A:</strong> Yes, it is machine washable. Please follow the care instructions.</p>
+          <div className="item-view-description-item">
+            <img src={qualityIcon} alt="High Quality" className="item-view-description-icon" />
+            <div className="item-view-description-text">
+              <h3>High Quality</h3>
+              <p>This product is made from premium, high-grade materials that ensure exceptional durability and long-term performance. The quality craftsmanship guarantees that it will withstand daily use and maintain its integrity over time.</p>
+              <p>Key Features:</p>
+              <ul>
+                <li>Made with top-notch materials for enhanced longevity.</li>
+                <li>Rigorous quality control checks during manufacturing.</li>
+                <li>Resistant to wear and tear for a longer lifespan.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="item-view-description-item">
+            <img src={durabilityIcon} alt="Durable" className="item-view-description-icon" />
+            <div className="item-view-description-text">
+              <h3>Durable</h3>
+              <p>Designed to be incredibly durable, this product can handle the rigors of everyday use without compromising on performance. It is built to resist damage and maintain its functionality even under challenging conditions.</p>
+              <p>Key Features:</p>
+              <ul>
+                <li>Constructed with high-strength materials.</li>
+                <li>Engineered to resist impacts and rough handling.</li>
+                <li>Perfect for both indoor and outdoor environments.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="item-view-description-item">
+            <img src={sizesIcon} alt="Various Sizes" className="item-view-description-icon" />
+            <div className="item-view-description-text">
+              <h3>Various Sizes</h3>
+              <p>This product is available in a range of sizes to cater to different needs and preferences. Whether you need a small size for a compact space or a larger option for more extensive coverage, we have you covered.</p>
+              <p>Key Features:</p>
+              <ul>
+                <li>Options available in multiple sizes to fit your needs.</li>
+                <li>Size guide included to help you choose the perfect fit.</li>
+                <li>Versatile sizing for various applications and uses.</li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <p><strong>Usage Instructions:</strong> Use as directed for optimal performance. Ensure to keep the product clean and dry. For best results, follow the recommended care instructions provided with the product.</p>
+        <p><strong>Customer Reviews:</strong> "Great product! My pet loves it." - Jane Doe</p>
+        <p>"Excellent quality and fast shipping." - John Smith</p>
+        <p><strong>FAQs:</strong></p>
+        <p><strong>Q:</strong> Is this item washable?</p>
+        <p><strong>A:</strong> Yes, it is machine washable. Please follow the care instructions provided for best results.</p>
+        <p><strong>Q:</strong> What materials is this item made of?</p>
+        <p><strong>A:</strong> It is made from high-quality, eco-friendly materials that are safe for your pet and the environment.</p>
       </section>
 
       {/* Show Cart if visible */}

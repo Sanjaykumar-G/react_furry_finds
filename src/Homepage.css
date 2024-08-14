@@ -383,11 +383,13 @@ body {
 
 .categories-title {
   font-size: 36px;
-  margin-bottom: 30px; /* This margin ensures the title is above the boxes */
+  padding-left: 30px;
+  top: 160px;
+  margin-bottom: 30px; /* Margin ensures the title is above the boxes */
   color: #7d3f2a; /* Title color */
   position: relative;
   transition: color 0.3s;
-  align-items: center;
+  display: inline-block;
 }
 
 .categories-title::after {
@@ -410,12 +412,16 @@ body {
   color: #a4826d; /* Title color on hover */
 }
 
-.categories-container {
+.categories-box-container {
   display: flex;
+  /* top: 400px; */
+  padding-bottom: 50px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin: 0; /* Removed margin to avoid spacing issues */
+  padding-left: 140px;
+  margin: 0 auto; /* Center container horizontally */
+  max-width: 1200px; /* Maximum width to avoid stretching too much on large screens */
 }
 
 .category-box {
@@ -427,6 +433,7 @@ body {
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none; /* Remove underline from links */
 }
 
 .category-box:hover {
@@ -455,11 +462,12 @@ body {
   text-align: center;
   transition: background-color 0.3s ease;
   border-radius: 10px;
+  color: #fff; /* Text color */
+  background-color: rgba(0, 0, 0, 0.5); /* Background color for readability */
 }
 
 .category-box:hover .category-name {
   background-color: rgba(0, 0, 0, 0.8);
-  color: #ddd;
 }
 
 .browse-arrow {
@@ -467,10 +475,11 @@ body {
   justify-content: center;
   align-items: center;
   width: 60px;
-  height: 200px;
+  height: 60px; /* Adjusted height to match other elements */
   font-size: 2.5em;
   cursor: pointer;
   transition: transform 0.3s ease;
+  margin: 0 auto; /* Center arrow horizontally */
 }
 
 .browse-arrow:hover {
@@ -783,3 +792,59 @@ body {
 
 
 
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 28px; /* Increase the size */
+  padding: 12px; /* Add padding for better click area */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition effects */
+  color: #333;
+}
+
+.profile-btn:hover {
+  transform: scale(1.2); /* Slightly enlarge the button on hover */
+  color: #007bff; /* Change color on hover */
+}
+
+.profile-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0; /* Align to the right */
+  background-color: #fff; /* Change to white for a cleaner look */
+  min-width: 200px; /* Increase the width */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3); /* Darker shadow for more depth */
+  z-index: 1;
+  animation: dropdown-animation 0.5s forwards;
+  border-radius: 8px; /* More rounded corners */
+  overflow: hidden; /* Smooth transition */
+  transform-origin: top center; /* Animation origin */
+}
+
+.profile-dropdown-content a {
+  color: #333; /* Darker text color */
+  padding: 16px 20px; /* Increase padding for better spacing */
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition effects */
+}
+
+.profile-dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: #007bff; /* Change color on hover */
+  border-left: 4px solid #007bff; /* Add a left border on hover */
+}
+
+.profile-dropdown:hover .profile-dropdown-content {
+  display: block;
+}
+
+@keyframes dropdown-animation {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,12 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Cart.css'; // Import CSS for cart
 import closeIcon from '../../assets/close-icon.svg'; // Import close icon
 import dustbinIcon from '../../assets/dustbin-icon.svg'; // Import dustbin icon
 
 const Cart = ({ items, onClose, onUpdateQuantity, onRemoveItem }) => {
+  const navigate = useNavigate();
+
   const totalAmount = items.reduce((acc, item) => acc + item.discountPrice * item.quantity, 0);
   const totalMRP = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const pointsEarned = Math.floor(totalAmount); // Assuming points are earned equal to the amount spent
+
+  const handleCheckout = () => {
+    navigate('/checkout', { state: { items } });
+  };
 
   return (
     <div className="unique-cart-overlay">
@@ -58,7 +65,9 @@ const Cart = ({ items, onClose, onUpdateQuantity, onRemoveItem }) => {
           <p className="unique-cart-summary-item">Petsy Member? You will earn {pointsEarned} Petsy Points on this purchase</p>
         </div>
         <div className="unique-cart-checkout">
-          <button className="unique-cart-checkout-button">Checkout ₹{totalAmount.toFixed(2)}</button>
+          <button className="unique-cart-checkout-button" onClick={handleCheckout}>
+            Checkout ₹{totalAmount.toFixed(2)}
+          </button>
           <p className="unique-cart-checkout-info">Shipping and Petsy Points redemption will be calculated on checkout.</p>
         </div>
       </div>

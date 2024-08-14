@@ -1,7 +1,25 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import dogImage from '../../assets/dogfood.jpg.jpeg'; // Import images
-import catImage from '../../assets/cat.jpg'; // Import images
+import dogImage2 from '../../assets/dogfood2.jpg'; // Import images
+import dogImage3 from '../../assets/dogfood3.jpg'; // Import images
+import dogImage4 from '../../assets/dogfood4.jpg'; // Import images
+import dogImage5 from '../../assets/dogfood5.jpg'; // Import images
+import dogImage6 from '../../assets/dogfood6.jpg'; // Import images
+import dogImage7 from '../../assets/dogfood7.jpg'; // Import images
+import dogImage8 from '../../assets/dogfood8.jpg'; // Import images
+
+// import catImage from '../../assets/cat.jpg'; // Import images
+import catImage2 from '../../assets/catfood2.jpg'; // Import images
+import catImage3 from '../../assets/catfood3.jpg'; // Import images
+import catImage4 from '../../assets/catfood4.jpg'; // Import images
+import catImage5 from '../../assets/catfood5.jpg'; // Import images
+
+import birdImage2 from '../../assets/birdfood2.jpg'; // Import images
+import birdImage3 from '../../assets/birdfood3.jpg'; // Import images
+import Image2 from '../../assets/food2.jpg'; // Import images
+import Image3 from '../../assets/food3.jpg'; // Import images
+
 import SlideImage1 from '../../assets/slide1.jpg';
 import SlideImage2 from '../../assets/slide2.jpg';
 import SlideImage3 from '../../assets/slide3.jpg';
@@ -9,18 +27,29 @@ import SlideImage4 from '../../assets/slide4.jpg';
 import DiscountCarousel from '../DiscountCarousel';
 import { Header, Footer } from '../Homepage';
 import Cart from '../cart/Cart'; // Import Cart component
+import { FaHeart, FaRegHeart } from 'react-icons/fa'; // Importing heart icons
 
 import './PetFoodsListPage.css'; // Import CSS
 
 const PetFoodsListPage = () => {
   const navigate = useNavigate(); // Initialize useNavigate
   const [petFoods, setPetFoods] = useState([
-    { id: 1, name: 'Premium Dog Food', price: 50, discountPrice: 40, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage },
-    { id: 2, name: 'Premium Dog Food', price: 50, discountPrice: 40, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage },
-    { id: 3, name: 'Premium Dog Food', price: 50, discountPrice: 40, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage },
-    { id: 4, name: 'Premium Dog Food', price: 50, discountPrice: 40, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage },
-    { id: 5, name: 'Premium Dog Food', price: 50, discountPrice: 40, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage },
-    { id: 6, name: 'Catnip Treats', price: 20, discountPrice: 15, rating: 4.0, brand: 'Brand B', petType: 'cat', image: catImage },
+    { id: 1, name: 'Pedigree Adult Dry Dog Food - Meat and Rice', price: 50, discountPrice: 40, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage },
+    { id: 2, name: 'Fabled Dry Dog Food - Happy to Sea for Adult Dogs (all breeds)', price: 50, discountPrice: 40, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage2 },
+    { id: 3, name: 'Fabled Dry Dog Food - Eager to Meat for Adult Dogs (all breeds)', price: 30, discountPrice: 20, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage3 },
+    { id: 4, name: 'Royal Canin Starter Medium Breed Mother & Babydog Dry Dog Food', price: 70, discountPrice: 40, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage4 },
+    { id: 5, name: 'Arden Grange Adult Prestige Dry Dog Food (All Breeds) - Rich in Fresh Chicken', price: 30, discountPrice: 10, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage5 },
+    { id: 6, name: 'Arden Grange Puppy/Junior (Small/Medium Breed) Dry Dog Food - Fresh Chicken', price: 20, discountPrice: 10, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage6 },
+    { id: 7, name: 'Pedigree Adult Wet Dog Food, Chicken & Liver Chunks in Gravy, 70 g (Pack of 15)', price: 20, discountPrice: 10, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage7 },
+    { id: 8, name: 'Himalaya Healthy Adult Dog Treats - with Chicken', price: 20, discountPrice: 10, rating: 4.5, brand: 'Brand A', petType: 'dog', image: dogImage8 },
+    { id: 9, name: 'Royal Canin Fit Adult Dry Cat Food', price: 20, discountPrice: 15, rating: 4.0, brand: 'Brand B', petType: 'cat', image: catImage2 },
+    { id: 10, name: 'Farmina Dry Food - N&D Prime Cat Lamb & Blueberry Adult', price: 20, discountPrice: 15, rating: 4.0, brand: 'Brand B', petType: 'cat', image: catImage3 },
+    { id: 11, name: 'Drools Dry Cat Food - Ocean Fish', price: 20, discountPrice: 15, rating: 4.0, brand: 'Brand B', petType: 'cat', image: catImage4 },
+    { id: 12, name: 'Arden Grange Adult Dry Cat Food - Fresh Chicken & Potato', price: 20, discountPrice: 15, rating: 4.0, brand: 'Brand B', petType: 'cat', image: catImage5 },
+    { id: 13, name: 'Zupreem Fruit Blend Bird Food for Medium Birds', price: 20, discountPrice: 15, rating: 4.0, brand: 'Brand B', petType: 'bird', image: birdImage2 },
+    { id: 14, name: 'Vitapol Karmeo Premium Food for Budgie (500g)', price: 20, discountPrice: 15, rating: 4.0, brand: 'Brand B', petType: 'bird', image: birdImage3 },
+    { id: 15, name: 'Vitapol Herbal Hay for Small Animals', price: 20, discountPrice: 15, rating: 4.0, brand: 'Brand B', petType: 'cat', image: Image2 },
+    { id: 16, name: 'Vitapol Karmeo Premium Food for Hamsters (400g)', price: 20, discountPrice: 15, rating: 4.0, brand: 'Brand B', petType: 'cat', image: Image3 },
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,6 +59,7 @@ const PetFoodsListPage = () => {
   const [petTypeFilter, setPetTypeFilter] = useState('all');
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
+  const [likedItems, setLikedItems] = useState([]); // State for liked items
 
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value);
@@ -75,6 +105,14 @@ const PetFoodsListPage = () => {
 
   const handleCloseCart = () => {
     setShowCart(false);
+  };
+
+  const handleLikeToggle = (itemId) => {
+    if (likedItems.includes(itemId)) {
+      setLikedItems(likedItems.filter(id => id !== itemId)); // Remove from liked items
+    } else {
+      setLikedItems([...likedItems, itemId]); // Add to liked items
+    }
   };
 
   const filteredPetFoods = petFoods.filter((item) => {
@@ -222,19 +260,25 @@ const PetFoodsListPage = () => {
                 >
                   View
                 </button>
+                <button 
+                  className="pet-foods-like-button"
+                  onClick={() => handleLikeToggle(item.id)}
+                >
+                  {likedItems.includes(item.id) ? <FaHeart /> : <FaRegHeart />}
+                </button>
               </div>
             </div>
           </div>
         ))}
       </section>
 
-      {/* Show Cart if visible */}
+      {/* Cart Component */}
       {showCart && (
         <Cart 
-          items={cartItems} 
-          onClose={handleCloseCart} 
-          onUpdateQuantity={handleUpdateQuantity} 
-          onRemoveItem={handleRemoveItem} 
+          items={cartItems}
+          onClose={handleCloseCart}
+          onUpdateQuantity={handleUpdateQuantity}
+          onRemoveItem={handleRemoveItem}
         />
       )}
 

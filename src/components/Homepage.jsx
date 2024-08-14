@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faInfoCircle, faEnvelope, faMapMarkerAlt, faSearch, faPaw, faUserPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faInfoCircle, faEnvelope, faMapMarkerAlt, faSearch, faPaw, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'; // Add this import
-import dogImage from '../assets/dog.jpg'; // Ensure this path is correct
+import dogImage from '../assets/dog.jpg';
+import catImage from '../assets/cat.jpg';
+import birdImage from '../assets/bird.jpg'; // Replace with actual path
+import hamsterImage from '../assets/hamster.jpg'; // Replace with actual path
+ // Ensure this path is correct
 import '../Homepage.css';
 import '../dog.css';
 import { Link } from 'react-router-dom';
@@ -16,6 +20,7 @@ import accessoriesImage from '../assets/accessories.jpg';
 import doctorImage from '../assets/doctor.jpg';
 import sellingImage from '../assets/selling.jpg';
 import trainingImage from '../assets/training.jpg';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -27,6 +32,7 @@ export const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [location, setLocation] = useState('Your Location');
   const [showMap, setShowMap] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const locations = ['Location 1', 'Location 2', 'Location 3']; // Example locations
 
   const handleCategoriesClick = () => setShowCategories(!showCategories);
@@ -37,6 +43,10 @@ export const Header = () => {
     console.log('Search submitted:', searchQuery);
   };
   const handleMapClose = () => setShowMap(false);
+  const navigate = useNavigate();
+  const handleCartClick = () => {
+    navigate('/cart');
+  };
 
   
 
@@ -142,12 +152,26 @@ export const Header = () => {
           <br />
           <br />
           <div className="cart-container">
-            <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
-          </div>
+      <FontAwesomeIcon 
+        icon={faShoppingCart} 
+        className="cart-icon" 
+        onClick={handleCartClick} 
+      />
+    </div>
         </div>
-        <button className="signup-btn">
-          <FontAwesomeIcon icon={faUserPlus} /> 
-        </button>
+        <div className="profile-dropdown">
+          <button className="profile-btn" onClick={() => setShowDropdown(!showDropdown)}>
+            <FontAwesomeIcon icon={faUser} />
+          </button>
+          {showDropdown && (
+            <div className="profile-dropdown-content">
+              <Link to="/signup">Signup</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/admin">Admin</Link>
+              <Link to="/profile">Profile</Link>
+            </div>
+          )}
+        </div>
       </div>
       {showMap && (
         <div className="map-modal">
@@ -190,25 +214,24 @@ const VideoSection = () => (
 // Categories Component
 
 const categories = [
-  { name: 'Dog', image: dogImage },
-  { name: 'Cat', image: require('../assets/cat.jpg') }, // Add the actual image path
-  { name: 'Bird', image: require('../assets/bird.jpg') }, // Add the actual image path
-  { name: 'Hamster', image: require('../assets/hamster.jpg') }, // Add the actual image path
+  { name: 'Dog', image: dogImage, link: '/dog' },
+  { name: 'Cat', image: require('../assets/cat.jpg'), link: '/cat' },
+  { name: 'Bird', image: require('../assets/bird.jpg'), link: '/bird' },
+  { name: 'Hamster', image: require('../assets/hamster.jpg'), link: '/hamster' },
 ];
 
 const Categories = () => {
   return (
     <div className="categories-container">
       <h2 className="categories-title">Find Your Pet</h2>
-      <div className="categories-container">
-
-      {categories.map((category, index) => (
-        <div className="category-box" key={index}>
-          <img src={category.image} alt={category.name} className="category-image" />
-          <div className="category-name">{category.name}</div>
-        </div>
-      ))}
-      <div className="browse-arrow">&rarr;</div>
+      <div className="categories-box-container"> {/* Updated class name */}
+        {categories.map((category, index) => (
+          <Link to={category.link} key={index} className="category-box">
+            <img src={category.image} alt={category.name} className="category-image" />
+            <div className="category-name">{category.name}</div>
+          </Link>
+        ))}
+        <div className="browse-arrow">&rarr;</div>
       </div>
     </div>
   );
@@ -217,12 +240,12 @@ const Categories = () => {
 
 // Featured Pets Component
 const sections = [
-  { name: 'Adoption', image: adoptionImage },
-  { name: 'Foods', image: foodsImage },
-  { name: 'Pet Accessories', image: accessoriesImage },
-  { name: 'Nearby Veterinary Doctor', image: doctorImage },
-  { name: 'Selling Option', image: sellingImage },
-  { name: 'Training', image: trainingImage }, // New option
+  // { name: 'Adoption', image: adoptionImage },
+  { name: 'Foods', image: foodsImage, link: '/food' },
+  { name: 'Pet Accessories', image: accessoriesImage, link: '/toys' },
+  // { name: 'Nearby Veterinary Doctor', image: doctorImage },
+  // { name: 'Selling Option', image: sellingImage },
+  // { name: 'Training', image: trainingImage }, // New option
 ];
 
 const FeaturedPets = () => {
@@ -231,10 +254,10 @@ const FeaturedPets = () => {
       <h2 className="featured-title">Explore</h2>
       <div className="featured-container">
         {sections.map((section, index) => (
-          <div key={index} className="featured-box">
+          <Link key={index} to={section.link} className="featured-box">
             <img src={section.image} alt={section.name} className="featured-image" />
             <div className="featured-name">{section.name}</div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
@@ -243,7 +266,6 @@ const FeaturedPets = () => {
 
 
 
-// About Us Component
 // About Us Component
 const AboutUs = () => (
   <section className="about-us">
